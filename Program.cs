@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using FinanceApi.Data;
 using FinanceApi.Services;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
@@ -17,6 +20,26 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
+
+//Configurações de login com token
+var key = Encoding.ASCII.GetBytes("SuaChaveSuperSecretaComMaisDe32Caracteres");
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 //Adiciona configuração que lida com problemas de ciclos nos jsons
 builder.Services.AddControllers()
@@ -38,6 +61,8 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllers(); // Isso é o que "ativa" os atributos [Route]
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
 

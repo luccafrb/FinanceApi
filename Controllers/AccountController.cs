@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using FinanceApi.DTOs;
 using FinanceApi.Models;
 using FinanceApi.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FinanceApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/accounts")]
     public class AccountController(IAccountService accountService) : ControllerBase
