@@ -15,7 +15,7 @@ namespace FinanceApi.Services
 
         public async Task<User> CreateAsync(UserCreateDto userDto)
         {
-            var newUser = new User(userDto.Name, userDto.Email, userDto.Phone);
+            var newUser = new User(userDto.Name, userDto.Email, userDto.Password, userDto.Phone);
 
             await _context.Users.AddAsync(newUser);
             await _context.SaveChangesAsync();
