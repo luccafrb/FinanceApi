@@ -20,7 +20,8 @@ namespace FinanceApi.Services
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name, user.Email),
-                    new Claim("id", user.Id.ToString()) // Guardamos o ID no token!
+                    new Claim("id", user.Id.ToString()), // Guardamos o ID no token!
+                    new Claim(ClaimTypes.Role, user.IsAdmin ? "Admin" : "User")
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(
