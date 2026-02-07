@@ -4,7 +4,7 @@ using FinanceApi.DTOs.Create;
 using FinanceApi.Services;
 using Microsoft.AspNetCore.Authorization;
 
-namespace FinanceApi.Controllers.Admins
+namespace FinanceApi.Controllers.Users
 {
     [Authorize]
     [ApiController]
