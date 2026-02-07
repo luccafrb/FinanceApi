@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using FinanceApi.Data;
-using FinanceApi.Services;
+using FinanceApi.Services.Users;
+using FinanceApi.Services.Admins;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;

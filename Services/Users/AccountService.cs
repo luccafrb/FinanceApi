@@ -9,7 +9,7 @@ namespace FinanceApi.Services.Users
     {
         private readonly AppDbContext _context = context;
 
-        public async Task<IEnumerable<Account>> GetAll(Guid userId)
+        public async Task<IEnumerable<Account>> GetAllAsync(Guid userId)
         {
             var accounts = await _context.Accounts
                             .Where(a => a.UserId == userId)
@@ -18,16 +18,16 @@ namespace FinanceApi.Services.Users
             return accounts;
         }
 
-        public async Task<Account> CreateAsync(AccountCreateDto accountDto)
+        public async Task<Account> CreateAsync(AccountCreateDto accountDto, Guid userId)
         {
             var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Id == accountDto.UserId)
+                .FirstOrDefaultAsync(u => u.Id == userId)
                 ?? throw new ArgumentException("Usuário não encontrado com o E-mail informado.");
 
-            var accountExists = await _context.Accounts
+            var accountNameExists = await _context.Accounts
                 .AnyAsync(a => a.UserId == user.Id && a.Name == accountDto.Name);
 
-            if (accountExists)
+            if (accountNameExists)
             {
                 throw new ArgumentException("Você já possui uma conta com este nome. Tente novamente com outro.");
             }
@@ -44,25 +44,25 @@ namespace FinanceApi.Services.Users
             await _context.SaveChangesAsync();
             return newAccount;
         }
-        public async Task<Account> GetById(Guid id)
+        public async Task<Account> GetByIdAsync(Guid accountId, Guid userId)
         {
             var account = await _context.Accounts
                 .Include(a => a.Transactions)
-                .FirstOrDefaultAsync(a => a.Id == id)
+                .FirstOrDefaultAsync(a => a.Id == accountId && a.UserId == userId)
                 ?? throw new ArgumentException("Conta não encontrada com o ID informado.");
 
             return account;
         }
-        public async Task DeleteById(Guid id)
+        public async Task DeleteByIdAsync(Guid id, Guid userId)
         {
-            var accountToDelete = await _context.Accounts.FirstOrDefaultAsync(a => a.Id == id)
+            var accountToDelete = await _context.Accounts.FirstOrDefaultAsync(a => a.Id == id && a.UserId == userId)
                 ?? throw new ArgumentException("Conta não encontrada pelo ID informado.");
 
             _context.Accounts.Remove(accountToDelete);
         }
-        public async Task UpdateById(Guid id, AccountCreateDto accountDto)
+        public async Task UpdateByIdAsync(AccountCreateDto accountDto, Guid accountId, Guid userId)
         {
-            var accountToUpdate = await _context.Accounts.FirstOrDefaultAsync(a => a.Id == id)
+            var accountToUpdate = await _context.Accounts.FirstOrDefaultAsync(a => a.Id == accountId && a.UserId == userId)
                 ?? throw new ArgumentException("Conta não encontrada pelo ID informado.");
             accountToUpdate.Name = accountDto.Name;
             accountToUpdate.Description = accountDto.Description;

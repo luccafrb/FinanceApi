@@ -1,5 +1,5 @@
 @FinanceApi_HostAddress = http://localhost:5175/api/
-@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImpvYW9AZW1haWwuY29tIiwiaWQiOiI4MWFhNGRkOC1lM2I2LTQ2MmEtYTU0ZC05M2Y5YTc3NmQ3NzAiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTc3MDUwNDE4OSwiZXhwIjoxNzcwNTExMzg5LCJpYXQiOjE3NzA1MDQxODl9.zp5IV3ojBiysgIatIlwtb5C1cT-GOQgmO8oLhSu3l6c
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDUwNjAwNiwiZXhwIjoxNzcwNTEzMjA2LCJpYXQiOjE3NzA1MDYwMDZ9.oGXYbMd77TurdQTmgIYmf7x9QeH1Kc6rImcwp52qGMM
 GET {{FinanceApi_HostAddress}}users
 Accept: application/json
 
@@ -31,8 +31,8 @@ POST {{FinanceApi_HostAddress}}auth/login
 Content-Type: application/json
 
 {
-  "email": "joao@email.com",
-  "password": "joao123"
+  "email": "luccafrbz@gmail.com",
+  "password": "lucca123"
 }
 
 ###

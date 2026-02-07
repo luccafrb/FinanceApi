@@ -1,6 +1,5 @@
 
 using Microsoft.AspNetCore.Mvc;
-using FinanceApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using FinanceApi.DTOs.Create;
 using FinanceApi.Services.Users;
@@ -18,18 +17,18 @@ namespace FinanceApi.Controllers.Users
         private readonly IAccountService _accountService = accountService;
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var accounts = await _accountService.GetAll(UserId);
+            var accounts = await _accountService.GetAllAsync(UserId);
             return accounts is null
                 ? NotFound()
                 : Ok(accounts);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetByIdAsync(Guid id)
         {
-            var account = await _accountService.GetById(id);
+            var account = await _accountService.GetByIdAsync(id, UserId);
 
             return account is null
                 ? NotFound()
@@ -37,20 +36,20 @@ namespace FinanceApi.Controllers.Users
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(AccountCreateDto accountCreateDto)
+        public async Task<IActionResult> CreateAsync(AccountCreateDto accountCreateDto)
         {
-            var newAccount = await _accountService.CreateAsync(accountCreateDto);
+            var newAccount = await _accountService.CreateAsync(accountCreateDto, UserId);
             return newAccount is null
                 ? NotFound()
                 : Created();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateById(Guid id, AccountCreateDto accountDto)
+        public async Task<IActionResult> UpdateByIdAsync(Guid id, AccountCreateDto accountDto)
         {
             try
             {
-                await _accountService.UpdateById(id, accountDto);
+                await _accountService.UpdateByIdAsync(accountDto, id, UserId);
                 return NoContent();
             }
             catch (ArgumentException ex)
@@ -60,9 +59,9 @@ namespace FinanceApi.Controllers.Users
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteById(Guid id)
+        public async Task<IActionResult> DeleteByIdAsync(Guid id)
         {
-            await _accountService.DeleteById(id);
+            await _accountService.DeleteByIdAsync(id, UserId);
             return NoContent();
         }
     }
