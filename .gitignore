@@ -1,0 +1,30 @@
+## Identificadores de build e binários
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Tt]est[Rr]esults/
+
+## Configurações do Visual Studio e VS Code
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+
+## Banco de dados SQLite (Importante para não subir seus dados de teste)
+*.db
+*.db-shm
+*.db-wal
+
+## Segredos e configurações locais
+appsettings.Development.json
+usersecrets.json
+
+## Pacotes NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+## Arquivos temporários do Sistema Operacional
+.DS_Store
+Thumbs.db
