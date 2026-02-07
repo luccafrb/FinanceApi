@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using FinanceApi.Data;
-using FinanceApi.DTOs;
+using FinanceApi.DTOs.Create;
 using FinanceApi.Models;
 
 namespace FinanceApi.Services
@@ -14,11 +14,11 @@ namespace FinanceApi.Services
     {
         private readonly AppDbContext _context = context;
 
-        public async Task<IEnumerable<Account>> GetAll()
+        public async Task<IEnumerable<Account>> GetAll(Guid userId)
         {
             var accounts = await _context.Accounts
-                .AsNoTracking()
-                .ToListAsync();
+                            .Where(a => a.UserId == userId)
+                            .ToListAsync();
 
             return accounts;
         }

@@ -14,15 +14,12 @@ namespace FinanceApi.Controllers
     public class AccountController(IAccountService accountService) : ControllerBase
     {
 
-
+        protected Guid UserId => Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value!);
         private readonly IAccountService _accountService = accountService;
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
-                            ?? User.FindFirst("id")?.Value;
-
             var accounts = await _accountService.GetAll();
             return accounts is null
                 ? NotFound()
