@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using FinanceApi.DTOs;
 using FinanceApi.Models;
 using FinanceApi.Services;
 using Microsoft.AspNetCore.Authorization;
+using FinanceApi.DTOs.Create;
+using System.Security.Claims;
 
 namespace FinanceApi.Controllers
 {
@@ -12,11 +13,16 @@ namespace FinanceApi.Controllers
     [Route("api/accounts")]
     public class AccountController(IAccountService accountService) : ControllerBase
     {
+
+
         private readonly IAccountService _accountService = accountService;
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                            ?? User.FindFirst("id")?.Value;
+
             var accounts = await _accountService.GetAll();
             return accounts is null
                 ? NotFound()

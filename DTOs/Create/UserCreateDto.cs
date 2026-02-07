@@ -1,4 +1,4 @@
-namespace FinanceApi.DTOs
+namespace FinanceApi.DTOs.Create
 {
     public class UserCreateDto
     {

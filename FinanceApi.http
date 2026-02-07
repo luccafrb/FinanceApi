@@ -1,6 +1,56 @@
-@FinanceApi_HostAddress = http://localhost:5175
+@FinanceApi_HostAddress = http://localhost:5175/api/
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsIm5iZiI6MTc3MDQ3NDkxNCwiZXhwIjoxNzcwNDgyMTE0LCJpYXQiOjE3NzA0NzQ5MTR9.H0q_nfDHBC4dfET3hPkoVeNnFRyF06sk2oNIzzCOhkg
 
-GET {{FinanceApi_HostAddress}}/weatherforecast/
+
+GET {{FinanceApi_HostAddress}}users
 Accept: application/json
 
 ###
+
+GET {{FinanceApi_HostAddress}}users/3a2ab1ed-16d9-497c-a4e5-5e084da1a97f
+Accept: application/json
+
+###
+
+POST {{FinanceApi_HostAddress}}users
+Content-Type: application/json
+
+{
+  "name": "string",
+  "email": "string",
+  "phone": "string",
+  "password": "string"
+}
+
+###
+
+DELETE {{FinanceApi_HostAddress}}users/
+Accept: application/json
+
+###
+
+POST {{FinanceApi_HostAddress}}auth/login
+Content-Type: application/json
+
+{
+  "email": "luccafrbz@gmail.com",
+  "password": "lucca123"
+}
+
+###
+
+GET {{FinanceApi_HostAddress}}accounts
+Accept: application/json
+Authorization: Bearer {{Token}}
+
+###
+
+POST {{FinanceApi_HostAddress}}accounts
+Content-Type: application/json
+Authorization: Bearer {{Token}}
+
+{
+  "userId": "3a2ab1ed-16d9-497c-a4e5-5e084da1a97f",
+  "name": "Banco do Brasil",
+  "description": "Minha conta principal"
+}

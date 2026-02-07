@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FinanceApi.DTOs
+namespace FinanceApi.DTOs.Create
 {
     public class AccountCreateDto
     {

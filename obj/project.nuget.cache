@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xOWJJs4aJNQ=",
+  "dgSpecHash": "detCgUje7J0=",
   "success": true,
   "projectFilePath": "C:\\programing\\FinanceApi\\FinanceApi.csproj",
   "expectedPackageFiles": [
@@ -40,10 +40,10 @@
     "C:\\Users\\lucca\\.nuget\\packages\\sqlitepclraw.core\\2.1.11\\sqlitepclraw.core.2.1.11.nupkg.sha512",
     "C:\\Users\\lucca\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.11\\sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
     "C:\\Users\\lucca\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.11\\sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512",
-    "C:\\Users\\lucca\\.nuget\\packages\\swashbuckle.aspnetcore\\10.1.1\\swashbuckle.aspnetcore.10.1.1.nupkg.sha512",
-    "C:\\Users\\lucca\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.1.1\\swashbuckle.aspnetcore.swagger.10.1.1.nupkg.sha512",
-    "C:\\Users\\lucca\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.1\\swashbuckle.aspnetcore.swaggergen.10.1.1.nupkg.sha512",
-    "C:\\Users\\lucca\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.1\\swashbuckle.aspnetcore.swaggerui.10.1.1.nupkg.sha512",
+    "C:\\Users\\lucca\\.nuget\\packages\\swashbuckle.aspnetcore\\10.1.2\\swashbuckle.aspnetcore.10.1.2.nupkg.sha512",
+    "C:\\Users\\lucca\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.1.2\\swashbuckle.aspnetcore.swagger.10.1.2.nupkg.sha512",
+    "C:\\Users\\lucca\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.2\\swashbuckle.aspnetcore.swaggergen.10.1.2.nupkg.sha512",
+    "C:\\Users\\lucca\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.2\\swashbuckle.aspnetcore.swaggerui.10.1.2.nupkg.sha512",
     "C:\\Users\\lucca\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
     "C:\\Users\\lucca\\.nuget\\packages\\system.composition\\9.0.0\\system.composition.9.0.0.nupkg.sha512",
     "C:\\Users\\lucca\\.nuget\\packages\\system.composition.attributedmodel\\9.0.0\\system.composition.attributedmodel.9.0.0.nupkg.sha512",

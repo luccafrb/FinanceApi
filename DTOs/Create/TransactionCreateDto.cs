@@ -1,6 +1,6 @@
 using FinanceApi.Models;
 
-namespace FinanceApi.DTOs
+namespace FinanceApi.DTOs.Create
 {
     public class TransactionCreateDto
     {
