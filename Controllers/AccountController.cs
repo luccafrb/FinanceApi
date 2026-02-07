@@ -20,7 +20,7 @@ namespace FinanceApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var accounts = await _accountService.GetAll();
+            var accounts = await _accountService.GetAll(UserId);
             return accounts is null
                 ? NotFound()
                 : Ok(accounts);

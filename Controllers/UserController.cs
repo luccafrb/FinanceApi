@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
-using SQLitePCL;
-using FinanceApi.DTOs;
-using FinanceApi.Models;
+using FinanceApi.DTOs.Create;
 using FinanceApi.Services;
 
 namespace FinanceApi.Controller

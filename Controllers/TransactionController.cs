@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using FinanceApi.DTOs;
-using FinanceApi.Models;
+using FinanceApi.DTOs.Create;
 using FinanceApi.Services;
 
 namespace FinanceApi.Controllers

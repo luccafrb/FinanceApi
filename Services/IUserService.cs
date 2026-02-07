@@ -1,4 +1,5 @@
-using FinanceApi.DTOs;
+using FinanceApi.DTOs.Create;
+using FinanceApi.DTOs.Responses;
 using FinanceApi.Models;
 
 namespace FinanceApi.Services

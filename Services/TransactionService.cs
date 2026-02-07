@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using FinanceApi.Data;
 using FinanceApi.Models;
-using FinanceApi.DTOs;
+using FinanceApi.DTOs.Create;
 
 namespace FinanceApi.Services
 {

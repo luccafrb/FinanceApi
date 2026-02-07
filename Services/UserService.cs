@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using FinanceApi.Data;
 using FinanceApi.DTOs;
 using FinanceApi.Models;
-using static FinanceApi.DTOs.UserResponseDto;
+using FinanceApi.DTOs.Create;
+using FinanceApi.DTOs.Responses;
 
 namespace FinanceApi.Services
 {
