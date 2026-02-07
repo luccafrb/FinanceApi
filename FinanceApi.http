@@ -43,6 +43,12 @@ Authorization: Bearer {{Token}}
 
 ###
 
+GET {{FinanceApi_HostAddress}}accounts/A99F8820-F9AE-4153-B250-0E044F8A07B8
+Accept: application/json
+Authorization: Bearer {{Token}}
+
+###
+
 POST {{FinanceApi_HostAddress}}accounts
 Content-Type: application/json
 Authorization: Bearer {{Token}}

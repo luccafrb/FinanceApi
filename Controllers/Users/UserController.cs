@@ -14,21 +14,21 @@ namespace FinanceApi.Controllers.Users
         private readonly IAccountService _accountService = accountService;
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var users = await _userService.GetAllAsync();
             return Ok(users);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(UserCreateDto userCreateDto)
+        public async Task<IActionResult> CreateAsync(UserCreateDto userCreateDto)
         {
             var user = await _userService.CreateAsync(userCreateDto);
-            return CreatedAtAction(nameof(GetAll), new { id = user.Id }, user);
+            return CreatedAtAction(nameof(CreateAsync), new { id = user.Id }, user);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetByIdAsync(Guid id)
         {
             var user = await _userService.GetByIdAsync(id);
             return user is null
@@ -37,16 +37,16 @@ namespace FinanceApi.Controllers.Users
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            await _userService.Delete(id);
+            await _userService.DeleteAsync(id);
             return NoContent();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id, UserCreateDto userDto)
+        public async Task<IActionResult> UpdateAsync(Guid id, UserCreateDto userDto)
         {
-            await _userService.Update(id, userDto);
+            await _userService.UpdateAsync(id, userDto);
             return Ok();
         }
 

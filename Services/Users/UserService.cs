@@ -48,7 +48,7 @@ namespace FinanceApi.Services.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public async Task Delete(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
@@ -63,7 +63,7 @@ namespace FinanceApi.Services.Users
             }
         }
 
-        public async Task<User> Update(Guid id, UserCreateDto userDto)
+        public async Task<User> UpdateAsync(Guid id, UserCreateDto userDto)
         {
             var userToUpdate = await _context.Users.FirstOrDefaultAsync(u => u.Id == id) ?? throw new ArgumentException("Usuário não encontrado com o e-mail informado.");
 
