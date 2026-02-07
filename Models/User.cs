@@ -13,6 +13,7 @@ namespace FinanceApi.Models
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
+        public bool IsAdmin { get; set; } = false;
         public string? Phone { get; set; }
         public virtual ICollection<Account> Accounts { get; set; } = [];
         public User() { }
