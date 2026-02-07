@@ -14,7 +14,7 @@ namespace FinanceApi.Controllers
     public class AccountController(IAccountService accountService) : ControllerBase
     {
 
-        protected Guid UserId => Guid.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value!);
+        protected Guid UserId => Guid.Parse(User.FindFirst("id")?.Value!);
         private readonly IAccountService _accountService = accountService;
 
         [HttpGet]

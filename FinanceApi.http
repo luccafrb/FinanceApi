@@ -1,5 +1,5 @@
 @FinanceApi_HostAddress = http://localhost:5175/api/
-@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsIm5iZiI6MTc3MDQ3NDkxNCwiZXhwIjoxNzcwNDgyMTE0LCJpYXQiOjE3NzA0NzQ5MTR9.H0q_nfDHBC4dfET3hPkoVeNnFRyF06sk2oNIzzCOhkg
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsIm5iZiI6MTc3MDQ5OTgzNiwiZXhwIjoxNzcwNTA3MDM2LCJpYXQiOjE3NzA0OTk4MzZ9.UScjmC_A90tM0tfl15cy2IsrN-QDAd-nXgDJGDIpiw0
 
 
 GET {{FinanceApi_HostAddress}}users
@@ -16,10 +16,10 @@ POST {{FinanceApi_HostAddress}}users
 Content-Type: application/json
 
 {
-  "name": "string",
-  "email": "string",
-  "phone": "string",
-  "password": "string"
+  "name": "João",
+  "email": "joao@email.com",
+  "phone": "12394193847",
+  "password": "joao123"
 }
 
 ###
@@ -50,7 +50,7 @@ Content-Type: application/json
 Authorization: Bearer {{Token}}
 
 {
-  "userId": "3a2ab1ed-16d9-497c-a4e5-5e084da1a97f",
+  "userId": "81aa4dd8-e3b6-462a-a54d-93f9a776d770",
   "name": "Banco do Brasil",
-  "description": "Minha conta principal"
+  "description": "Conta do joão"
 }
