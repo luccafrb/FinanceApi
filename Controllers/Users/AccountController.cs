@@ -1,10 +1,9 @@
-using Microsoft.AspNetCore.Http.HttpResults;
+
 using Microsoft.AspNetCore.Mvc;
-using FinanceApi.Models;
 using FinanceApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using FinanceApi.DTOs.Create;
-using System.Security.Claims;
+
 
 namespace FinanceApi.Controllers.Users
 {

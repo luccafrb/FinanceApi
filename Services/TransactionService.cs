@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 using FinanceApi.Data;
 using FinanceApi.Models;
