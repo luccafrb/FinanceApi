@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using FinanceApi.DTOs.Create;
 using FinanceApi.Services;
+using Microsoft.AspNetCore.Authorization;
 
-namespace FinanceApi.Controller
+namespace FinanceApi.Controllers.Admins
 {
+    [Authorize]
     [ApiController]
     [Route("api/users")]
     public class UserController(IUserService userService, IAccountService accountService) : ControllerBase

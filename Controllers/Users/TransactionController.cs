@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using FinanceApi.DTOs.Create;
 using FinanceApi.Services;
+using Microsoft.AspNetCore.Authorization;
 
-namespace FinanceApi.Controllers
+namespace FinanceApi.Controllers.Users
 {
+    [Authorize]
     [ApiController]
     [Route("api/transactions")]
     public class TransationController(ITransactionService transactionService) : ControllerBase

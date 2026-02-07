@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using FinanceApi.DTOs.Create;
 using System.Security.Claims;
 
-namespace FinanceApi.Controllers
+namespace FinanceApi.Controllers.Users
 {
     [Authorize]
     [ApiController]
