@@ -1,7 +1,5 @@
 @FinanceApi_HostAddress = http://localhost:5175/api/
-@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsIm5iZiI6MTc3MDQ5OTgzNiwiZXhwIjoxNzcwNTA3MDM2LCJpYXQiOjE3NzA0OTk4MzZ9.UScjmC_A90tM0tfl15cy2IsrN-QDAd-nXgDJGDIpiw0
-
-
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImpvYW9AZW1haWwuY29tIiwiaWQiOiI4MWFhNGRkOC1lM2I2LTQ2MmEtYTU0ZC05M2Y5YTc3NmQ3NzAiLCJyb2xlIjoiVXNlciIsIm5iZiI6MTc3MDUwNDE4OSwiZXhwIjoxNzcwNTExMzg5LCJpYXQiOjE3NzA1MDQxODl9.zp5IV3ojBiysgIatIlwtb5C1cT-GOQgmO8oLhSu3l6c
 GET {{FinanceApi_HostAddress}}users
 Accept: application/json
 
@@ -33,8 +31,8 @@ POST {{FinanceApi_HostAddress}}auth/login
 Content-Type: application/json
 
 {
-  "email": "luccafrbz@gmail.com",
-  "password": "lucca123"
+  "email": "joao@email.com",
+  "password": "joao123"
 }
 
 ###
@@ -54,3 +52,8 @@ Authorization: Bearer {{Token}}
   "name": "Banco do Brasil",
   "description": "Conta do joão"
 }
+
+###
+
+POST {{FinanceApi_HostAddress}}admin/users/3A2AB1ED-16D9-497C-A4E5-5E084DA1A97F/promote
+Authorization: Bearer {{Token}}

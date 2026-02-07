@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddOpenApi();
 
 // --- BLOCO 1: Adiciona o gerador do Swagger aos serviços ---
 builder.Services.AddControllers();
@@ -55,7 +54,6 @@ var app = builder.Build();
 // Geralmente ativamos apenas em ambiente de Desenvolvimento (IsDevelopment)
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI(); // Aqui é onde a interface visual é criada
 }
