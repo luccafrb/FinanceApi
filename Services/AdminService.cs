@@ -18,7 +18,6 @@ namespace FinanceApi.Services
 
             user.PromoteToAdmin();
             await _context.SaveChangesAsync();
-
         }
     }
 }
