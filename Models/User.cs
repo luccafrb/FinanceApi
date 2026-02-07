@@ -27,5 +27,7 @@ namespace FinanceApi.Models
             Email = email;
             PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);
         }
+
+        public void PromoteToAdmin() => IsAdmin = true;
     }
 }
