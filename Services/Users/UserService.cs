@@ -4,7 +4,7 @@ using FinanceApi.Models;
 using FinanceApi.DTOs.Create;
 using FinanceApi.DTOs.Responses;
 
-namespace FinanceApi.Services
+namespace FinanceApi.Services.Users
 {
     public class UserService(AppDbContext context) : IUserService
     {
