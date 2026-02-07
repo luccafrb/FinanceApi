@@ -1,4 +1,4 @@
-using FinanceApi.Services;
+using FinanceApi.Services.Admins;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
