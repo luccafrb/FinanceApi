@@ -1,7 +1,7 @@
 using FinanceApi.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceApi.Services
+namespace FinanceApi.Services.Admins
 {
     public class AdminService(AppDbContext context) : IAdminService
     {

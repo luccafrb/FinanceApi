@@ -1,4 +1,4 @@
-namespace FinanceApi.Services
+namespace FinanceApi.Services.Admins
 {
     public interface IAdminService
     {

@@ -2,7 +2,7 @@ using FinanceApi.DTOs.Create;
 using FinanceApi.DTOs.Responses;
 using FinanceApi.Models;
 
-namespace FinanceApi.Services
+namespace FinanceApi.Services.Users
 {
     public interface IUserService
     {

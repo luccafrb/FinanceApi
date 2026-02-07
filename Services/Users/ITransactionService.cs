@@ -1,7 +1,7 @@
 using FinanceApi.DTOs.Create;
 using FinanceApi.Models;
 
-namespace FinanceApi.Services
+namespace FinanceApi.Services.Users
 {
     public interface ITransactionService
     {

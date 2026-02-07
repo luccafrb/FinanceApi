@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using FinanceApi.DTOs.Create;
-using FinanceApi.Services;
+using FinanceApi.Services.Users;
 using Microsoft.AspNetCore.Authorization;
 
 namespace FinanceApi.Controllers.Users

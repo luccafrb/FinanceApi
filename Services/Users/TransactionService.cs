@@ -3,7 +3,7 @@ using FinanceApi.Data;
 using FinanceApi.Models;
 using FinanceApi.DTOs.Create;
 
-namespace FinanceApi.Services
+namespace FinanceApi.Services.Users
 {
     public class TransactionService(AppDbContext context) : ITransactionService
     {
