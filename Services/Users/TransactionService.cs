@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using FinanceApi.Data;
 using FinanceApi.Models;
 using FinanceApi.DTOs.Create;
+using FinanceApi.DTOs.Responses;
 
 namespace FinanceApi.Services.Users
 {
@@ -33,12 +34,23 @@ namespace FinanceApi.Services.Users
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Transaction>> GetAllAsync(Guid userId)
+        public async Task<IEnumerable<TransactionResponseDto>> GetAllAsync(Guid userId)
         {
             return await _context.Transactions
                 .Include(t => t.Account)
                 .AsNoTracking()
                 .Where(t => t.Account != null && t.Account.UserId == userId)
+                .Select(t => new TransactionResponseDto
+                {
+                    Id = t.Id,
+                    Name = t.Name ?? "",
+                    Description = t.Description ?? "",
+                    Value = t.Value,
+                    CompetenceDate = t.CompetenceDate,
+                    SettlementDate = t.SettlementDate,
+                    AccountId = t.AccountId,
+                    Type = t.Type
+                })
                 .ToListAsync();
         }
     }
