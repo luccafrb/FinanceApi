@@ -1,0 +1,34 @@
+@FinanceApi_HostAddress = http://localhost:5175/api/
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDUwNjAwNiwiZXhwIjoxNzcwNTEzMjA2LCJpYXQiOjE3NzA1MDYwMDZ9.oGXYbMd77TurdQTmgIYmf7x9QeH1Kc6rImcwp52qGMM
+
+GET {{FinanceApi_HostAddress}}users
+Accept: application/json
+
+###
+
+POST {{FinanceApi_HostAddress}}users
+Content-Type: application/json
+
+{
+  "name": "João",
+  "email": "joao@email.com",
+  "phone": "12394193847",
+  "password": "joao123"
+}
+
+###
+
+DELETE {{FinanceApi_HostAddress}}users/
+Accept: application/json
+
+###
+
+PUT {{FinanceApi_HostAddress}}users/
+Content-Type: application/json
+
+{
+  "name": "João",
+  "email": "joao@email.com",
+  "phone": "12394193847",
+  "password": "joao123"
+}

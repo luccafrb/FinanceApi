@@ -20,8 +20,7 @@ namespace FinanceApi.Services.Users
                                 Description = a.Description,
                                 Id = a.Id,
 
-                                Balance = a.Transactions.Where(t => t.Type == TransactionType.Income).Sum(t => t.Value)
-                                        - a.Transactions.Where(t => t.Type == TransactionType.Expense).Sum(t => t.Value),
+                                Balance = a.Transactions.Sum(t => t.Type == TransactionType.Income ? t.Value : -t.Value),
                                 Transactions = a.Transactions
                                                 .Select(t => new AccountTransactionResponseDto
                                                 {
@@ -74,6 +73,7 @@ namespace FinanceApi.Services.Users
                     Id = a.Id,
                     Name = a.Name,
                     Description = a.Description ?? "",
+                    Balance = a.Transactions.Sum(t => t.Type == TransactionType.Income ? t.Value : -t.Value),
                     Transactions = a.Transactions.Select(t => new AccountTransactionResponseDto
                     {
                         Id = t.Id,
