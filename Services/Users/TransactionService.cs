@@ -33,7 +33,6 @@ namespace FinanceApi.Services.Users
             await _context.Transactions.AddAsync(newTransaction);
             await _context.SaveChangesAsync();
         }
-
         public async Task<IEnumerable<TransactionResponseDto>> GetAllAsync(Guid userId)
         {
             return await _context.Transactions

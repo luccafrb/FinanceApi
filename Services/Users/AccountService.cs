@@ -2,16 +2,35 @@ using Microsoft.EntityFrameworkCore;
 using FinanceApi.Data;
 using FinanceApi.DTOs.Create;
 using FinanceApi.Models;
+using FinanceApi.DTOs.Responses;
 
 namespace FinanceApi.Services.Users
 {
     public class AccountService(AppDbContext context) : IAccountService
     {
         private readonly AppDbContext _context = context;
-        public async Task<IEnumerable<Account>> GetAllAsync(Guid userId)
+        public async Task<IEnumerable<AccountResponseDto>> GetAllAsync(Guid userId)
         {
             var accounts = await _context.Accounts
                             .Where(a => a.UserId == userId)
+                            .Include(a => a.Transactions)
+                            .Select(a => new AccountResponseDto
+                            {
+                                Name = a.Name,
+                                Description = a.Description,
+                                Id = a.Id,
+                                Transactions = a.Transactions
+                                                .Select(t => new AccountTransactionResponseDto
+                                                {
+                                                    Id = t.Id,
+                                                    Name = t.Name ?? "",
+                                                    Description = t.Description ?? "",
+                                                    Value = t.Value,
+                                                    CompetenceDate = t.CompetenceDate,
+                                                    SettlementDate = t.SettlementDate,
+                                                    Type = t.Type
+                                                })
+                            })
                             .ToListAsync();
 
             return accounts;
@@ -42,11 +61,28 @@ namespace FinanceApi.Services.Users
             await _context.SaveChangesAsync();
             return newAccount;
         }
-        public async Task<Account> GetByIdAsync(Guid accountId, Guid userId)
+        public async Task<AccountResponseDto> GetByIdAsync(Guid accountId, Guid userId)
         {
             var account = await _context.Accounts
-                .Include(a => a.Transactions)
-                .FirstOrDefaultAsync(a => a.Id == accountId && a.UserId == userId)
+                .AsNoTracking()
+                .Where(a => a.Id == accountId && a.UserId == userId)
+                .Select(a => new AccountResponseDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Description = a.Description ?? "",
+                    Transactions = a.Transactions.Select(t => new AccountTransactionResponseDto
+                    {
+                        Id = t.Id,
+                        Name = t.Name ?? "",
+                        Description = t.Description ?? "",
+                        Value = t.Value,
+                        CompetenceDate = t.CompetenceDate,
+                        SettlementDate = t.SettlementDate,
+                        Type = t.Type
+                    })
+                })
+                .FirstOrDefaultAsync()
                 ?? throw new ArgumentException("Conta não encontrada com o ID informado.");
 
             return account;

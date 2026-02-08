@@ -1,0 +1,23 @@
+@FinanceApi_HostAddress = http://localhost:5175/api/
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDUwNjAwNiwiZXhwIjoxNzcwNTEzMjA2LCJpYXQiOjE3NzA1MDYwMDZ9.oGXYbMd77TurdQTmgIYmf7x9QeH1Kc6rImcwp52qGMM
+
+
+
+GET {{FinanceApi_HostAddress}}accounts
+Authorization: Bearer {{Token}}
+
+###
+
+POST {{FinanceApi_HostAddress}}accounts
+Authorization: Bearer {{Token}}
+Content-Type: application/json
+
+{
+  "accountId": "7fc73b58-ffdf-4fba-b6c9-1dda8abccd47",
+  "value": 200,
+  "name": "Hamburguer",
+  "description": "Saída com os amigos",
+  "type": 2,
+  "competenceDate": "2026-02-08T00:36:42.896Z",
+  "settlementDate": "2026-02-08T00:36:42.896Z"
+}
