@@ -19,6 +19,9 @@ namespace FinanceApi.Services.Users
                                 Name = a.Name,
                                 Description = a.Description,
                                 Id = a.Id,
+
+                                Balance = a.Transactions.Where(t => t.Type == TransactionType.Income).Sum(t => t.Value)
+                                        - a.Transactions.Where(t => t.Type == TransactionType.Expense).Sum(t => t.Value),
                                 Transactions = a.Transactions
                                                 .Select(t => new AccountTransactionResponseDto
                                                 {
@@ -93,6 +96,7 @@ namespace FinanceApi.Services.Users
                 ?? throw new ArgumentException("Conta não encontrada pelo ID informado.");
 
             _context.Accounts.Remove(accountToDelete);
+            await _context.SaveChangesAsync();
         }
         public async Task UpdateByIdAsync(AccountCreateDto accountDto, Guid accountId, Guid userId)
         {

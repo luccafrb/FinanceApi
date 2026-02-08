@@ -1,7 +1,5 @@
 @FinanceApi_HostAddress = http://localhost:5175/api/
-@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDUwNjAwNiwiZXhwIjoxNzcwNTEzMjA2LCJpYXQiOjE3NzA1MDYwMDZ9.oGXYbMd77TurdQTmgIYmf7x9QeH1Kc6rImcwp52qGMM
-
-
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDUxMzYzMywiZXhwIjoxNzcwNTIwODMzLCJpYXQiOjE3NzA1MTM2MzN9.fZkuyPWCoS5uQiPaKczH6-xDGb_dFDOs2aUxj3Nrdus
 
 GET {{FinanceApi_HostAddress}}accounts
 Authorization: Bearer {{Token}}
@@ -14,10 +12,23 @@ Content-Type: application/json
 
 {
   "accountId": "7fc73b58-ffdf-4fba-b6c9-1dda8abccd47",
-  "value": 200,
-  "name": "Hamburguer",
-  "description": "Saída com os amigos",
-  "type": 2,
-  "competenceDate": "2026-02-08T00:36:42.896Z",
-  "settlementDate": "2026-02-08T00:36:42.896Z"
+  "name": "Inter",
+  "description": "Minha conta secundária"
+}
+
+###
+
+DELETE {{FinanceApi_HostAddress}}accounts/d56b0610-9f59-434a-9981-58ab0cc9e28b
+Authorization: Bearer {{Token}}
+
+###
+
+@accountId = c889d621-b7e4-47f6-bdea-d0f64b374299
+PUT {{FinanceApi_HostAddress}}accounts/{{accountId}}
+Authorization: Bearer {{Token}}
+Content-Type: application/json
+
+{
+  "name":"Teste",
+  "Description":"Teste"
 }

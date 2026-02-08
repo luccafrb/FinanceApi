@@ -1,0 +1,10 @@
+@FinanceApi_HostAddress = http://localhost:5175/api/
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDUxMzYzMywiZXhwIjoxNzcwNTIwODMzLCJpYXQiOjE3NzA1MTM2MzN9.fZkuyPWCoS5uQiPaKczH6-xDGb_dFDOs2aUxj3Nrdus
+
+POST {{FinanceApi_HostAddress}}auth/login
+Content-Type: application/json
+
+{
+  "email": "luccafrbz@gmail.com",
+  "password": "lucca123"
+}
