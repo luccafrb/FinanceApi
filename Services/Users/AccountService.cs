@@ -9,6 +9,8 @@ namespace FinanceApi.Services.Users
     public class AccountService(AppDbContext context) : IAccountService
     {
         private readonly AppDbContext _context = context;
+
+        //Estou realizando o mesmo cáculo de balance no getall e getbyid. então, se alterar em um, tem que alterar no outro.
         public async Task<IEnumerable<AccountResponseDto>> GetAllAsync(Guid userId)
         {
             var accounts = await _context.Accounts
