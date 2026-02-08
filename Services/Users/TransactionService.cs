@@ -8,10 +8,10 @@ namespace FinanceApi.Services.Users
     public class TransactionService(AppDbContext context) : ITransactionService
     {
         private readonly AppDbContext _context = context;
-        public async Task CreateAsync(TransactionCreateDto transactionCreateDto)
+        public async Task CreateAsync(TransactionCreateDto transactionCreateDto, Guid userId)
         {
             var account = await _context.Accounts
-                .FirstOrDefaultAsync(a => a.Id == transactionCreateDto.AccountId)
+                .FirstOrDefaultAsync(a => a.Id == transactionCreateDto.AccountId && a.UserId == userId)
                 ?? throw new ArgumentException("Nenhuma conta foi encontrada com este ID.");
 
             var newTransaction = new Transaction()
@@ -24,18 +24,21 @@ namespace FinanceApi.Services.Users
                 Type = transactionCreateDto.Type,
                 Value = transactionCreateDto.Value,
                 CategoryId = transactionCreateDto.CategoryId,
-                SubCategoryId = transactionCreateDto.SubCategoryId
+                SubCategoryId = transactionCreateDto.SubCategoryId,
 
+                Account = account
             };
 
             await _context.Transactions.AddAsync(newTransaction);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Transaction>> GetAllAsync()
+        public async Task<IEnumerable<Transaction>> GetAllAsync(Guid userId)
         {
             return await _context.Transactions
+                .Include(t => t.Account)
                 .AsNoTracking()
+                .Where(t => t.Account != null && t.Account.UserId == userId)
                 .ToListAsync();
         }
     }

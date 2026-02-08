@@ -8,7 +8,6 @@ namespace FinanceApi.Services.Users
     public class AccountService(AppDbContext context) : IAccountService
     {
         private readonly AppDbContext _context = context;
-
         public async Task<IEnumerable<Account>> GetAllAsync(Guid userId)
         {
             var accounts = await _context.Accounts
@@ -17,7 +16,6 @@ namespace FinanceApi.Services.Users
 
             return accounts;
         }
-
         public async Task<Account> CreateAsync(AccountCreateDto accountDto, Guid userId)
         {
             var user = await _context.Users

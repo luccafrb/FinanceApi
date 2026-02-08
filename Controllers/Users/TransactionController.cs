@@ -12,17 +12,19 @@ namespace FinanceApi.Controllers.Users
     {
         private readonly ITransactionService _transactionService = transactionService;
 
+        protected Guid UserId => Guid.Parse(User.FindFirst("id")?.Value ?? Guid.Empty.ToString());
+
         [HttpPost]
         public async Task<IActionResult> Create(TransactionCreateDto transactionCreateDto)
         {
-            await _transactionService.CreateAsync(transactionCreateDto);
+            await _transactionService.CreateAsync(transactionCreateDto, UserId);
             return Created();
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var transactions = await _transactionService.GetAllAsync();
+            var transactions = await _transactionService.GetAllAsync(UserId);
 
             return transactions is null
                 ? NotFound()
