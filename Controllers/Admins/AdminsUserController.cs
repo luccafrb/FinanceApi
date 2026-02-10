@@ -7,9 +7,9 @@ namespace FinanceApi.Controllers.Admins
     [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/admin/users")]
-    public class AdminsUserController(IAdminUserService service) : ControllerBase
+    public class AdminsUserController(IAdminUserService adminUserService) : ControllerBase
     {
-        private readonly IAdminService _service = service;
+        private readonly IAdminUserService _adminUserService = adminUserService;
 
         [HttpPost("{id}/promote")]
         public async Task<IActionResult> PromoteToAdmin(Guid id)
