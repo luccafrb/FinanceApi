@@ -10,18 +10,19 @@ namespace FinanceApi.Controllers.Admins
     [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/admin/accounts")]
-    public class AdminAccountController(IAdminService adminService) : ControllerBase
+    public class AdminAccountController(IAdminAccountService adminAccountService) : ControllerBase
     {
         protected Guid UserId => Guid.Parse(User.FindFirst("id")?.Value!);
-        private readonly IAdminService _adminService = adminService;
-
+        private readonly IAdminAccountService _adminAccountService = adminAccountService;
         [HttpGet]
         public async Task<IActionResult> GetAllAsync(Guid? userId)
         {
-            var accounts = await _adminService.GetAllAsync(userId);
+            var accounts = await _adminAccountService.GetAllAsync(userId);
             return accounts is null
                 ? NotFound()
                 : Ok(accounts);
         }
+
+
     }
 }

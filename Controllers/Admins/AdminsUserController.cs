@@ -7,7 +7,7 @@ namespace FinanceApi.Controllers.Admins
     [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/admin/users")]
-    public class AdminsUserController(IAdminService service) : ControllerBase
+    public class AdminsUserController(IAdminUserService service) : ControllerBase
     {
         private readonly IAdminService _service = service;
 

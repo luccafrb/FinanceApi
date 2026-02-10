@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FinanceApi.Services.Admins
 {
-    public class AdminService(AppDbContext context) : IAdminService
+    public class AdminAccountService(AppDbContext context) : IAdminAccountService
     {
         private readonly AppDbContext _context = context;
 
