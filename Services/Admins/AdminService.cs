@@ -1,4 +1,5 @@
 using FinanceApi.Data;
+using FinanceApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinanceApi.Services.Admins
@@ -14,6 +15,16 @@ namespace FinanceApi.Services.Admins
 
             user.PromoteToAdmin();
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Account>> GetAllAsync(Guid? userId)
+        {
+            IQueryable<Account> query = _context.Accounts.AsNoTracking();
+
+            if (userId.HasValue)
+                query = query.Where(a => a.UserId == userId);
+
+            return await query.ToListAsync();
         }
     }
 }
