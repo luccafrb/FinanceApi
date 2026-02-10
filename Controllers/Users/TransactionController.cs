@@ -38,6 +38,13 @@ namespace FinanceApi.Controllers.Users
             await _service.UpdateByIdAsync(id, transactionCreateDto, UserId);
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleByIdAsync(Guid id)
+        {
+            await _service.DeleteByIdAsync(id, UserId);
+            return NoContent();
+        }
     }
 
 
