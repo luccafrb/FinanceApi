@@ -6,7 +6,7 @@ namespace FinanceApi.Controllers.Admins
     [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/admin/accounts")]
-    public class AdminsTransitionController : ControllerBase
+    public class AdminsTransationController : ControllerBase
     {
 
     }
