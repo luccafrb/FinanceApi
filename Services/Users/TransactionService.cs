@@ -56,7 +56,7 @@ namespace FinanceApi.Services.Users
         public async Task DeleteByIdAsync(Guid id, Guid userId)
         {
             var transactionToRemove = await _context.Transactions
-                .FirstOrDefaultAsync(t => t.Id == id && t.Account.UserId == userId)
+                .FirstOrDefaultAsync(t => t.Id == id && t.Account!.UserId == userId)
                 ?? throw new ArgumentException("Transaction não encontrada com o Id informado.");
 
             _context.Transactions.Remove(transactionToRemove);
@@ -66,7 +66,7 @@ namespace FinanceApi.Services.Users
         {
             var transactionToUpdate = await _context.Transactions
                 .Include(t => t.Account)
-                .FirstOrDefaultAsync(t => t.Id == id && t.Account.UserId == userId)
+                .FirstOrDefaultAsync(t => t.Id == id && t.Account!.UserId == userId)
                 ?? throw new ArgumentException("Transação não encontrada.");
 
             var category = _context.Categories
