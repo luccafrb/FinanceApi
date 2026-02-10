@@ -3,6 +3,7 @@ using FinanceApi.Data;
 using FinanceApi.Models;
 using FinanceApi.DTOs.Create;
 using FinanceApi.DTOs.Responses;
+using System.Runtime.CompilerServices;
 
 namespace FinanceApi.Services.Users
 {
@@ -51,6 +52,50 @@ namespace FinanceApi.Services.Users
                     Type = t.Type
                 })
                 .ToListAsync();
+        }
+        public async Task DeleteByIdAsync(Guid id, Guid userId)
+        {
+            var transactionToRemove = await _context.Transactions
+                .FirstOrDefaultAsync(t => t.Id == id && t.Account.UserId == userId)
+                ?? throw new ArgumentException("Transaction não encontrada com o Id informado.");
+
+            _context.Transactions.Remove(transactionToRemove);
+            await _context.SaveChangesAsync();
+        }
+        public async Task UpdateByIdAsync(Guid id, TransactionCreateDto transactionCreateDto, Guid userId)
+        {
+            var transactionToUpdate = await _context.Transactions
+                .Include(t => t.Account)
+                .FirstOrDefaultAsync(t => t.Id == id && t.Account.UserId == userId)
+                ?? throw new ArgumentException("Transação não encontrada.");
+
+            var category = _context.Categories
+                .AnyAsync(c => c.Id == transactionCreateDto.CategoryId && c.UserId == userId);
+            var subCategory = _context.Categories
+                .AnyAsync(s => s.Id == transactionCreateDto.SubCategoryId && s.UserId == userId);
+            var account = _context.Accounts
+                .AnyAsync(a => a.Id == transactionCreateDto.AccountId && a.UserId == userId);
+
+            await Task.WhenAll(category, subCategory, account);
+
+            if (!await category)
+                throw new ArgumentException("Categoria não encontrada.");
+            if (!await subCategory)
+                throw new ArgumentException("Subcategoria não encontrada.");
+            if (!await account)
+                throw new ArgumentException("Conta não encontrada.");
+
+            transactionToUpdate.Name = transactionCreateDto.Name;
+            transactionToUpdate.Description = transactionCreateDto.Description;
+            transactionToUpdate.Value = transactionCreateDto.Value;
+            transactionToUpdate.Type = transactionCreateDto.Type;
+            transactionToUpdate.CompetenceDate = transactionCreateDto.CompetenceDate;
+            transactionToUpdate.SettlementDate = transactionCreateDto.SettlementDate;
+            transactionToUpdate.CategoryId = transactionCreateDto.CategoryId;
+            transactionToUpdate.SubCategoryId = transactionCreateDto.SubCategoryId;
+            transactionToUpdate.AccountId = transactionCreateDto.AccountId;
+
+            await _context.SaveChangesAsync();
         }
     }
 }
