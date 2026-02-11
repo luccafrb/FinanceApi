@@ -12,5 +12,7 @@ namespace FinanceApi.DTOs.Responses
         public DateTime? SettlementDate { get; set; }
         public Guid AccountId { get; set; }
         public TransactionType Type { get; set; }
+        public Guid? CategoryId { get; set; }
+        public Guid? SubCategoryId { get; set; }
     }
 }

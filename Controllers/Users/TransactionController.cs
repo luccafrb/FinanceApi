@@ -23,13 +23,23 @@ namespace FinanceApi.Controllers.Users
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             var transactions = await _service.GetAllAsync(UserId);
 
             return transactions is null
                 ? NotFound()
                 : Ok(transactions);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByAsync(Guid id)
+        {
+            var transactionResponseDto = _service.GetByIdAsync(id, UserId);
+
+            return transactionResponseDto is null
+                ? NotFound()
+                : Ok(transactionResponseDto);
         }
 
         [HttpPut("{id}")]

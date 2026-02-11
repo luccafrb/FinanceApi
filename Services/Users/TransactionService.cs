@@ -97,5 +97,27 @@ namespace FinanceApi.Services.Users
 
             await _context.SaveChangesAsync();
         }
+        public async Task<TransactionResponseDto> GetByIdAsync(Guid transactionId, Guid userId)
+        {
+            var transactionToReturn = await _context.Transactions
+                .AsNoTracking()
+                .FirstOrDefaultAsync(t => t.Id == transactionId && t.Account!.UserId == userId)
+                ?? throw new ArgumentException("Transação não encontrada.");
+
+            return new TransactionResponseDto()
+            {
+                Id = transactionToReturn.Id,
+                Name = transactionToReturn.Name ?? string.Empty,
+                Description = transactionToReturn.Description ?? string.Empty,
+                Value = transactionToReturn.Value,
+                Type = transactionToReturn.Type,
+                CompetenceDate = transactionToReturn.CompetenceDate,
+                SettlementDate = transactionToReturn.SettlementDate,
+                AccountId = transactionToReturn.AccountId,
+                CategoryId = transactionToReturn.CategoryId,
+                SubCategoryId = transactionToReturn.SubCategoryId
+            };
+        }
+
     }
 }
