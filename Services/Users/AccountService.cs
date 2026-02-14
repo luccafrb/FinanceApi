@@ -3,12 +3,15 @@ using FinanceApi.Data;
 using FinanceApi.DTOs.Create;
 using FinanceApi.Models;
 using FinanceApi.DTOs.Responses;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
 
 namespace FinanceApi.Services.Users
 {
-    public class AccountService(AppDbContext context) : IAccountService
+    public class AccountService(AppDbContext context, IMapper mapper) : IAccountService
     {
         private readonly AppDbContext _context = context;
+        private readonly IMapper _mapper = mapper;
 
         //Estou realizando o mesmo cáculo de balance no getall e getbyid. então, se alterar em um, tem que alterar no outro.
         public async Task<IEnumerable<AccountResponseDto>> GetAllAsync(Guid userId)
@@ -16,25 +19,7 @@ namespace FinanceApi.Services.Users
             var accounts = await _context.Accounts
                             .Where(a => a.UserId == userId)
                             .Include(a => a.Transactions)
-                            .Select(a => new AccountResponseDto
-                            {
-                                Name = a.Name,
-                                Description = a.Description,
-                                Id = a.Id,
-
-                                Balance = a.Transactions.Sum(t => t.Type == TransactionType.Income ? t.Value : -t.Value),
-                                Transactions = a.Transactions
-                                                .Select(t => new AccountTransactionResponseDto
-                                                {
-                                                    Id = t.Id,
-                                                    Name = t.Name ?? "",
-                                                    Description = t.Description ?? "",
-                                                    Value = t.Value,
-                                                    CompetenceDate = t.CompetenceDate,
-                                                    SettlementDate = t.SettlementDate,
-                                                    Type = t.Type
-                                                })
-                            })
+                            .ProjectTo<AccountResponseDto>(_mapper.ConfigurationProvider)
                             .ToListAsync();
 
             return accounts;
@@ -70,23 +55,7 @@ namespace FinanceApi.Services.Users
             var account = await _context.Accounts
                 .AsNoTracking()
                 .Where(a => a.Id == accountId && a.UserId == userId)
-                .Select(a => new AccountResponseDto
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    Description = a.Description ?? "",
-                    Balance = a.Transactions.Sum(t => t.Type == TransactionType.Income ? t.Value : -t.Value),
-                    Transactions = a.Transactions.Select(t => new AccountTransactionResponseDto
-                    {
-                        Id = t.Id,
-                        Name = t.Name ?? "",
-                        Description = t.Description ?? "",
-                        Value = t.Value,
-                        CompetenceDate = t.CompetenceDate,
-                        SettlementDate = t.SettlementDate,
-                        Type = t.Type
-                    })
-                })
+                .ProjectTo<AccountResponseDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync()
                 ?? throw new ArgumentException("Conta não encontrada com o ID informado.");
 
