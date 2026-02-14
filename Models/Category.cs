@@ -8,6 +8,6 @@ namespace FinanceApi.Models
         public string Description { get; set; } = string.Empty;
 
         // Inicializar a lista evita erros ao dar um .Add() futuramente
-        public virtual ICollection<SubCategory> SubCategories { get; set; } = new List<SubCategory>();
+        public virtual ICollection<SubCategory> SubCategories { get; set; } = [];
     }
 }
