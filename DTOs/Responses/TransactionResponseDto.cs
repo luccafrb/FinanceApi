@@ -1,6 +1,6 @@
-using FinanceApi.Models;
+using LedgerCore.Models;
 
-namespace FinanceApi.DTOs.Responses
+namespace LedgerCore.DTOs.Responses
 {
     public class TransactionResponseDto
     {

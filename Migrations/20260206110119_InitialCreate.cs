@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace FinanceApi.Migrations
+namespace LedgerCore.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

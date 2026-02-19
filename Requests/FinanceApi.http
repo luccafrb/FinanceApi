@@ -1,16 +1,16 @@
-@FinanceApi_HostAddress = http://localhost:5175/api/
+@LedgerCore_HostAddress = http://localhost:5175/api/
 @Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDUwNjAwNiwiZXhwIjoxNzcwNTEzMjA2LCJpYXQiOjE3NzA1MDYwMDZ9.oGXYbMd77TurdQTmgIYmf7x9QeH1Kc6rImcwp52qGMM
-GET {{FinanceApi_HostAddress}}users
+GET {{LedgerCore_HostAddress}}users
 Accept: application/json
 
 ###
 
-GET {{FinanceApi_HostAddress}}users/3a2ab1ed-16d9-497c-a4e5-5e084da1a97f
+GET {{LedgerCore_HostAddress}}users/3a2ab1ed-16d9-497c-a4e5-5e084da1a97f
 Accept: application/json
 
 ###
 
-POST {{FinanceApi_HostAddress}}users
+POST {{LedgerCore_HostAddress}}users
 Content-Type: application/json
 
 {
@@ -22,12 +22,12 @@ Content-Type: application/json
 
 ###
 
-DELETE {{FinanceApi_HostAddress}}users/
+DELETE {{LedgerCore_HostAddress}}users/
 Accept: application/json
 
 ###
 
-POST {{FinanceApi_HostAddress}}auth/login
+POST {{LedgerCore_HostAddress}}auth/login
 Content-Type: application/json
 
 {
@@ -37,19 +37,19 @@ Content-Type: application/json
 
 ###
 
-GET {{FinanceApi_HostAddress}}accounts
+GET {{LedgerCore_HostAddress}}accounts
 Accept: application/json
 Authorization: Bearer {{Token}}
 
 ###
 
-GET {{FinanceApi_HostAddress}}accounts/A99F8820-F9AE-4153-B250-0E044F8A07B8
+GET {{LedgerCore_HostAddress}}accounts/A99F8820-F9AE-4153-B250-0E044F8A07B8
 Accept: application/json
 Authorization: Bearer {{Token}}
 
 ###
 
-POST {{FinanceApi_HostAddress}}accounts
+POST {{LedgerCore_HostAddress}}accounts
 Content-Type: application/json
 Authorization: Bearer {{Token}}
 
@@ -61,5 +61,5 @@ Authorization: Bearer {{Token}}
 
 ###
 
-POST {{FinanceApi_HostAddress}}admin/users/3A2AB1ED-16D9-497C-A4E5-5E084DA1A97F/promote
+POST {{LedgerCore_HostAddress}}admin/users/3A2AB1ED-16D9-497C-A4E5-5E084DA1A97F/promote
 Authorization: Bearer {{Token}}

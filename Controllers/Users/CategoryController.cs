@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper.Internal.Mappers;
-using FinanceApi.DTOs.Create;
-using FinanceApi.Models;
-using FinanceApi.Services.Users;
+using LedgerCore.DTOs.Create;
+using LedgerCore.Models;
+using LedgerCore.Services.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FinanceApi.Controllers.Users
+namespace LedgerCore.Controllers.Users
 {
     [Authorize]
     [ApiController]

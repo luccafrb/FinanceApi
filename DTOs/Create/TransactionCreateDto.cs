@@ -1,6 +1,6 @@
-using FinanceApi.Models;
+using LedgerCore.Models;
 
-namespace FinanceApi.DTOs.Create
+namespace LedgerCore.DTOs.Create
 {
     public class TransactionCreateDto
     {

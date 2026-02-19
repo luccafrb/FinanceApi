@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using FinanceApi.Models;
+using LedgerCore.Models;
 
-namespace FinanceApi.Data
+namespace LedgerCore.Data
 {
     public class AppDbContext : DbContext
     {

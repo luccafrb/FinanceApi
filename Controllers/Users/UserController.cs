@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using FinanceApi.DTOs.Create;
-using FinanceApi.Services.Users;
+using LedgerCore.DTOs.Create;
+using LedgerCore.Services.Users;
 using Microsoft.AspNetCore.Authorization;
 
-namespace FinanceApi.Controllers.Users
+namespace LedgerCore.Controllers.Users
 {
     [Authorize]
     [ApiController]

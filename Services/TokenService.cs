@@ -1,10 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using FinanceApi.Models;
+using LedgerCore.Models;
 using Microsoft.IdentityModel.Tokens;
 
-namespace FinanceApi.Services
+namespace LedgerCore.Services
 {
     public class TokenService
     {

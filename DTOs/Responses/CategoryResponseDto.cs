@@ -1,4 +1,4 @@
-namespace FinanceApi.DTOs.Responses
+namespace LedgerCore.DTOs.Responses
 {
     public class CategoryResponseDto
     {

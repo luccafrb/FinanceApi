@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace FinanceApi.Migrations
+namespace LedgerCore.Migrations
 {
     /// <inheritdoc />
     public partial class AddUserPassword : Migration

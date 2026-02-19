@@ -1,12 +1,12 @@
-using FinanceApi.Data;
-using FinanceApi.DTOs.Create;
-using FinanceApi.Models;
-using FinanceApi.Services;
-using FinanceApi.Services.Users;
+using LedgerCore.Data;
+using LedgerCore.DTOs.Create;
+using LedgerCore.Models;
+using LedgerCore.Services;
+using LedgerCore.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceApi.Controllers
+namespace LedgerCore.Controllers
 {
     [ApiController]
     [Route("api/auth")]

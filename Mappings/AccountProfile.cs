@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using FinanceApi.DTOs.Responses;
-using FinanceApi.Models;
+using LedgerCore.DTOs.Responses;
+using LedgerCore.Models;
 
-namespace FinanceApi.Mappings
+namespace LedgerCore.Mappings
 {
     public class AccountProfile : Profile
     {

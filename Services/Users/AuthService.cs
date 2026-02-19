@@ -1,10 +1,10 @@
-using FinanceApi.Data;
-using FinanceApi.DTOs.Create;
-using FinanceApi.Models;
+using LedgerCore.Data;
+using LedgerCore.DTOs.Create;
+using LedgerCore.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceApi.Services.Users
+namespace LedgerCore.Services.Users
 {
     public class AuthService(AppDbContext context) : IAuthService
     {

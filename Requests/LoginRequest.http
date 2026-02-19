@@ -1,7 +1,7 @@
-@FinanceApi_HostAddress = http://localhost:5175/api/
+@LedgerCore_HostAddress = http://localhost:5175/api/
 @Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDU3NTc5MiwiZXhwIjoxNzcwNTgyOTkyLCJpYXQiOjE3NzA1NzU3OTJ9.VY6wvC1BHs2Ntilmpk2bDjuPODvdqMXnp1qOcrJUY1s
 
-POST {{FinanceApi_HostAddress}}auth/login
+POST {{LedgerCore_HostAddress}}auth/login
 Content-Type: application/json
 
 {

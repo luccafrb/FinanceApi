@@ -1,8 +1,8 @@
-using FinanceApi.DTOs.Create;
-using FinanceApi.DTOs.Responses;
-using FinanceApi.Models;
+using LedgerCore.DTOs.Create;
+using LedgerCore.DTOs.Responses;
+using LedgerCore.Models;
 
-namespace FinanceApi.Services.Users
+namespace LedgerCore.Services.Users
 {
     public interface IUserService
     {

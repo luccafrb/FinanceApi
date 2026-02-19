@@ -1,8 +1,8 @@
 using AutoMapper;
-using FinanceApi.DTOs.Create;
-using FinanceApi.Models;
+using LedgerCore.DTOs.Create;
+using LedgerCore.Models;
 
-namespace FinanceApi.Mappings
+namespace LedgerCore.Mappings
 {
     public class CategoryProfile : Profile
     {

@@ -1,12 +1,12 @@
-@FinanceApi_HostAddress = http://localhost:5175/api/
+@LedgerCore_HostAddress = http://localhost:5175/api/
 @Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDY4Mjg5NywiZXhwIjoxNzcwNjkwMDk3LCJpYXQiOjE3NzA2ODI4OTd9.aIJvdfknCNTNqZckeCVQxRrOpl-RgMpI0ovk18_ivok
 
-GET {{FinanceApi_HostAddress}}admin/accounts/
+GET {{LedgerCore_HostAddress}}admin/accounts/
 Authorization: Bearer {{Token}}
 
 ###
 
-POST {{FinanceApi_HostAddress}}accounts
+POST {{LedgerCore_HostAddress}}accounts
 Authorization: Bearer {{Token}}
 Content-Type: application/json
 
@@ -18,13 +18,13 @@ Content-Type: application/json
 
 ###
 
-DELETE {{FinanceApi_HostAddress}}accounts/d56b0610-9f59-434a-9981-58ab0cc9e28b
+DELETE {{LedgerCore_HostAddress}}accounts/d56b0610-9f59-434a-9981-58ab0cc9e28b
 Authorization: Bearer {{Token}}
 
 ###
 
 @accountId = c889d621-b7e4-47f6-bdea-d0f64b374299
-PUT {{FinanceApi_HostAddress}}accounts/{{accountId}}
+PUT {{LedgerCore_HostAddress}}accounts/{{accountId}}
 Authorization: Bearer {{Token}}
 Content-Type: application/json
 

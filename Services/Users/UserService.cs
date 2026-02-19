@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using FinanceApi.Data;
-using FinanceApi.Models;
-using FinanceApi.DTOs.Create;
-using FinanceApi.DTOs.Responses;
+using LedgerCore.Data;
+using LedgerCore.Models;
+using LedgerCore.DTOs.Create;
+using LedgerCore.DTOs.Responses;
 
-namespace FinanceApi.Services.Users
+namespace LedgerCore.Services.Users
 {
     public class UserService(AppDbContext context) : IUserService
     {

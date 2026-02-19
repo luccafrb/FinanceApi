@@ -1,11 +1,11 @@
-using FinanceApi.Data;
-using FinanceApi.Models;
-using FinanceApi.Services.Admins;
+using LedgerCore.Data;
+using LedgerCore.Models;
+using LedgerCore.Services.Admins;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceApi.Controllers.Admins
+namespace LedgerCore.Controllers.Admins
 {
     [Authorize(Roles = "Admin")]
     [ApiController]

@@ -1,8 +1,8 @@
-using FinanceApi.Data;
-using FinanceApi.Models;
+using LedgerCore.Data;
+using LedgerCore.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceApi.Services.Admins
+namespace LedgerCore.Services.Admins
 {
     public class AdminAccountService(AppDbContext context) : IAdminAccountService
     {

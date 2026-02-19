@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FinanceApi.DTOs.Responses
+namespace LedgerCore.DTOs.Responses
 {
     public class TransactionFilterDto
     {

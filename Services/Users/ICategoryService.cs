@@ -1,7 +1,7 @@
-using FinanceApi.DTOs.Create;
-using FinanceApi.DTOs.Responses;
+using LedgerCore.DTOs.Create;
+using LedgerCore.DTOs.Responses;
 
-namespace FinanceApi.Services.Users
+namespace LedgerCore.Services.Users
 {
     public interface ICategoryService
     {

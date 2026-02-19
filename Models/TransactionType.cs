@@ -1,4 +1,4 @@
-namespace FinanceApi.Models
+namespace LedgerCore.Models
 {
     public enum TransactionType
     {

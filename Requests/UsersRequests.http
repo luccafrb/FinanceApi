@@ -1,12 +1,12 @@
-@FinanceApi_HostAddress = http://localhost:5175/api/
+@LedgerCore_HostAddress = http://localhost:5175/api/
 @Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Imx1Y2NhZnJiekBnbWFpbC5jb20iLCJpZCI6IjNhMmFiMWVkLTE2ZDktNDk3Yy1hNGU1LTVlMDg0ZGExYTk3ZiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc3MDUwNjAwNiwiZXhwIjoxNzcwNTEzMjA2LCJpYXQiOjE3NzA1MDYwMDZ9.oGXYbMd77TurdQTmgIYmf7x9QeH1Kc6rImcwp52qGMM
 
-GET {{FinanceApi_HostAddress}}users
+GET {{LedgerCore_HostAddress}}users
 Accept: application/json
 
 ###
 
-POST {{FinanceApi_HostAddress}}users
+POST {{LedgerCore_HostAddress}}users
 Content-Type: application/json
 
 {
@@ -18,12 +18,12 @@ Content-Type: application/json
 
 ###
 
-DELETE {{FinanceApi_HostAddress}}users/
+DELETE {{LedgerCore_HostAddress}}users/
 Accept: application/json
 
 ###
 
-PUT {{FinanceApi_HostAddress}}users/
+PUT {{LedgerCore_HostAddress}}users/
 Content-Type: application/json
 
 {

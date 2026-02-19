@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FinanceApi.Services.Admins
+namespace LedgerCore.Services.Admins
 {
     public interface IAdminUserService
     {

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using FinanceApi.Data;
+using LedgerCore.Data;
 
 #nullable disable
 
-namespace FinanceApi.Migrations
+namespace LedgerCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20260206125652_MakeCategoryIdNullable")]
@@ -20,7 +20,7 @@ namespace FinanceApi.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.2");
 
-            modelBuilder.Entity("FinanceApi.Models.Account", b =>
+            modelBuilder.Entity("LedgerCore.Models.Account", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,7 +44,7 @@ namespace FinanceApi.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("FinanceApi.Models.Category", b =>
+            modelBuilder.Entity("LedgerCore.Models.Category", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,7 +66,7 @@ namespace FinanceApi.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("FinanceApi.Models.SubCategory", b =>
+            modelBuilder.Entity("LedgerCore.Models.SubCategory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,7 +96,7 @@ namespace FinanceApi.Migrations
                     b.ToTable("SubCategories");
                 });
 
-            modelBuilder.Entity("FinanceApi.Models.Transaction", b =>
+            modelBuilder.Entity("LedgerCore.Models.Transaction", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -140,7 +140,7 @@ namespace FinanceApi.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("FinanceApi.Models.User", b =>
+            modelBuilder.Entity("LedgerCore.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -162,9 +162,9 @@ namespace FinanceApi.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("FinanceApi.Models.Account", b =>
+            modelBuilder.Entity("LedgerCore.Models.Account", b =>
                 {
-                    b.HasOne("FinanceApi.Models.User", "User")
+                    b.HasOne("LedgerCore.Models.User", "User")
                         .WithMany("Accounts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -173,9 +173,9 @@ namespace FinanceApi.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("FinanceApi.Models.SubCategory", b =>
+            modelBuilder.Entity("LedgerCore.Models.SubCategory", b =>
                 {
-                    b.HasOne("FinanceApi.Models.Category", "Category")
+                    b.HasOne("LedgerCore.Models.Category", "Category")
                         .WithMany("SubCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -184,19 +184,19 @@ namespace FinanceApi.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("FinanceApi.Models.Transaction", b =>
+            modelBuilder.Entity("LedgerCore.Models.Transaction", b =>
                 {
-                    b.HasOne("FinanceApi.Models.Account", "Account")
+                    b.HasOne("LedgerCore.Models.Account", "Account")
                         .WithMany("Transactions")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FinanceApi.Models.Category", "Category")
+                    b.HasOne("LedgerCore.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("FinanceApi.Models.SubCategory", "SubCategory")
+                    b.HasOne("LedgerCore.Models.SubCategory", "SubCategory")
                         .WithMany()
                         .HasForeignKey("SubCategoryId");
 
@@ -207,17 +207,17 @@ namespace FinanceApi.Migrations
                     b.Navigation("SubCategory");
                 });
 
-            modelBuilder.Entity("FinanceApi.Models.Account", b =>
+            modelBuilder.Entity("LedgerCore.Models.Account", b =>
                 {
                     b.Navigation("Transactions");
                 });
 
-            modelBuilder.Entity("FinanceApi.Models.Category", b =>
+            modelBuilder.Entity("LedgerCore.Models.Category", b =>
                 {
                     b.Navigation("SubCategories");
                 });
 
-            modelBuilder.Entity("FinanceApi.Models.User", b =>
+            modelBuilder.Entity("LedgerCore.Models.User", b =>
                 {
                     b.Navigation("Accounts");
                 });

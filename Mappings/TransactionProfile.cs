@@ -1,9 +1,9 @@
 using AutoMapper;
-using FinanceApi.DTOs.Responses;
-using FinanceApi.DTOs.Create; // Adicione o using do seu DTO de criação
-using FinanceApi.Models;
+using LedgerCore.DTOs.Responses;
+using LedgerCore.DTOs.Create; // Adicione o using do seu DTO de criação
+using LedgerCore.Models;
 
-namespace FinanceApi.Mappings
+namespace LedgerCore.Mappings
 {
     public class TransactionProfile : Profile
     {

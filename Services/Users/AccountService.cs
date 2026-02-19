@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using FinanceApi.Data;
-using FinanceApi.DTOs.Create;
-using FinanceApi.Models;
-using FinanceApi.DTOs.Responses;
+using LedgerCore.Data;
+using LedgerCore.DTOs.Create;
+using LedgerCore.Models;
+using LedgerCore.DTOs.Responses;
 using AutoMapper.QueryableExtensions;
 using AutoMapper;
 
-namespace FinanceApi.Services.Users
+namespace LedgerCore.Services.Users
 {
     public class AccountService(AppDbContext context, IMapper mapper) : IAccountService
     {

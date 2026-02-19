@@ -1,7 +1,7 @@
-using FinanceApi.DTOs;
-using FinanceApi.DTOs.Create;
+using LedgerCore.DTOs;
+using LedgerCore.DTOs.Create;
 
-namespace FinanceApi.Services.Users;
+namespace LedgerCore.Services.Users;
 
 public interface IAuthService
 {

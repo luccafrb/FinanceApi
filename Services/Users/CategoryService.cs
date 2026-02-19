@@ -1,12 +1,12 @@
 using AutoMapper;
-using FinanceApi.Data;
-using FinanceApi.DTOs.Create;
-using FinanceApi.DTOs.Responses;
-using FinanceApi.Models;
+using LedgerCore.Data;
+using LedgerCore.DTOs.Create;
+using LedgerCore.DTOs.Responses;
+using LedgerCore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace FinanceApi.Services.Users
+namespace LedgerCore.Services.Users
 {
     public class CategoryService(AppDbContext context, IMapper mapper) : ICategoryService
     {

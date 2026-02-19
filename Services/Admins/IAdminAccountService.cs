@@ -1,6 +1,6 @@
-using FinanceApi.Models;
+using LedgerCore.Models;
 
-namespace FinanceApi.Services.Admins
+namespace LedgerCore.Services.Admins
 {
     public interface IAdminAccountService
     {

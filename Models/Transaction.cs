@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace FinanceApi.Models
+namespace LedgerCore.Models
 {
     public class Transaction
     {
