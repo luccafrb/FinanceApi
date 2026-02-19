@@ -33,6 +33,8 @@ namespace FinanceApi.Services.Users
                 })
                 .ToListAsync();
 
+            await _context.SaveChangesAsync();
+
             return categories;
         }
         public async Task<CategoryResponseDto> GetByIdAsync(Guid categoryId, Guid userId)
@@ -49,6 +51,7 @@ namespace FinanceApi.Services.Users
                 .FirstOrDefaultAsync()
                 ?? throw new KeyNotFoundException("Categoria não encontrada.");
 
+            await _context.SaveChangesAsync();
 
             return category;
         }
@@ -56,8 +59,10 @@ namespace FinanceApi.Services.Users
         {
             var category = new Category
             {
+                Id = Guid.NewGuid(),
                 Name = categoryCreateDto.Name,
                 Description = categoryCreateDto.Description,
+                UserId = userId,
             };
 
             await _context.Categories

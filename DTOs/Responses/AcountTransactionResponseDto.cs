@@ -8,6 +8,8 @@ namespace FinanceApi.DTOs.Responses
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public decimal Value { get; set; }
+        public Guid? CategoryId { get; set; }
+        public Guid? SubCategoryId { get; set; }
         public DateTime CompetenceDate { get; set; }
         public DateTime? SettlementDate { get; set; }
         public TransactionType Type { get; set; }

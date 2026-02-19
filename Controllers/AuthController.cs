@@ -1,6 +1,8 @@
 using FinanceApi.Data;
-using FinanceApi.DTOs;
+using FinanceApi.DTOs.Create;
+using FinanceApi.Models;
 using FinanceApi.Services;
+using FinanceApi.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,26 +10,30 @@ namespace FinanceApi.Controllers
 {
     [ApiController]
     [Route("api/auth")]
-    public class AuthController(AppDbContext context) : ControllerBase
+    public class AuthController(IAuthService authService, IUserService userService) : ControllerBase
     {
-        private readonly AppDbContext _context = context;
+        private readonly IAuthService _authService = authService;
+        private readonly IUserService _userService = userService;
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginDto loginDto)
+        public async Task<IActionResult> LoginAsync(UserLoginDto loginDto)
         {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == loginDto.Email);
-            if (user == null)
-                return Unauthorized("E-mail inválido.");
-
-            var isPasswordValid = BCrypt.Net.BCrypt.Verify(loginDto.Password, user.PasswordHash);
-
-            if (!isPasswordValid)
-                return Unauthorized("Senha inválida.");
-
-            var token = TokenService.GenerateToken(user);
-
+            var token = await _authService.LoginAsync(loginDto);
             return Ok(new { token });
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> RegisterAsync(UserRegisterDto userRegisterDto)
+        {
+            var newUser = new UserCreateDto
+            {
+                Name = userRegisterDto.Name,
+                Email = userRegisterDto.Email,
+                Phone = userRegisterDto.Phone,
+                Password = userRegisterDto.Password,
+            };
+            var user = _userService.CreateAsync(newUser);
+            return Ok("Usuário criado.");
         }
     }
 }

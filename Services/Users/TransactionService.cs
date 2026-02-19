@@ -4,54 +4,76 @@ using FinanceApi.Models;
 using FinanceApi.DTOs.Create;
 using FinanceApi.DTOs.Responses;
 using System.Runtime.CompilerServices;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
 
 namespace FinanceApi.Services.Users
 {
-    public class TransactionService(AppDbContext context) : ITransactionService
+    public class TransactionService(AppDbContext context, IMapper mapper) : ITransactionService
     {
         private readonly AppDbContext _context = context;
-        public async Task CreateAsync(TransactionCreateDto transactionCreateDto, Guid userId)
+        private readonly IMapper _mapper = mapper;
+        public async Task CreateAsync(TransactionCreateDto dto, Guid userId)
         {
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(a => a.Id == transactionCreateDto.AccountId && a.UserId == userId)
-                ?? throw new ArgumentException("Nenhuma conta foi encontrada com este ID.");
+            // 1. Validar se a conta pertence ao usuário
+            var accountExists = await _context.Accounts
+                .AnyAsync(a => a.Id == dto.AccountId && a.UserId == userId);
 
-            var newTransaction = new Transaction()
+            if (!accountExists)
+                throw new ArgumentException("Conta não encontrada ou acesso negado.");
+
+            // 2. Validar Categoria (se enviada)
+            if (dto.CategoryId.HasValue)
             {
-                Name = transactionCreateDto.Name,
-                Description = transactionCreateDto.Description,
-                AccountId = transactionCreateDto.AccountId,
-                SettlementDate = transactionCreateDto.SettlementDate,
-                CompetenceDate = transactionCreateDto.CompetenceDate,
-                Type = transactionCreateDto.Type,
-                Value = transactionCreateDto.Value,
-                CategoryId = transactionCreateDto.CategoryId,
-                SubCategoryId = transactionCreateDto.SubCategoryId,
+                var categoryExists = await _context.Categories
+                    .AnyAsync(c => c.Id == dto.CategoryId && c.UserId == userId);
 
-                Account = account
-            };
+                if (!categoryExists)
+                    throw new ArgumentException("A categoria informada é inválida ou não pertence a este usuário.");
+            }
 
-            await _context.Transactions.AddAsync(newTransaction);
+            // 3. Validar Subcategoria (se enviada)
+            if (dto.SubCategoryId.HasValue)
+            {
+                var subCategoryExists = await _context.SubCategories
+                    .AnyAsync(s => s.Id == dto.SubCategoryId && s.Category.UserId == userId);
+
+                if (!subCategoryExists)
+                    throw new ArgumentException("A subcategoria informada é inválida.");
+            }
+
+            // 4. Mapear e Salvar
+            var transaction = _mapper.Map<Transaction>(dto);
+
+            // Opcional: Forçar o UserId se sua model de Transaction tiver esse campo direto
+            // transaction.UserId = userId; 
+
+            await _context.Transactions.AddAsync(transaction);
             await _context.SaveChangesAsync();
         }
-        public async Task<IEnumerable<TransactionResponseDto>> GetAllAsync(Guid userId)
+        public async Task<IEnumerable<TransactionResponseDto>> GetAllAsync(TransactionFilterDto transactionFilter, Guid userId)
         {
-            return await _context.Transactions
-                .Include(t => t.Account)
+            var query = _context.Transactions
                 .AsNoTracking()
-                .Where(t => t.Account != null && t.Account.UserId == userId)
-                .Select(t => new TransactionResponseDto
-                {
-                    Id = t.Id,
-                    Name = t.Name ?? "",
-                    Description = t.Description ?? "",
-                    Value = t.Value,
-                    CompetenceDate = t.CompetenceDate,
-                    SettlementDate = t.SettlementDate,
-                    AccountId = t.AccountId,
-                    Type = t.Type
-                })
-                .ToListAsync();
+                .Where(t => t.Account != null && t.Account.UserId == userId);
+
+            if (transactionFilter.StartDate.HasValue)
+                query = query.Where(t => t.SettlementDate >= transactionFilter.StartDate);
+
+            if (transactionFilter.EndDate.HasValue)
+                query = query.Where(t => t.SettlementDate <= transactionFilter.EndDate);
+
+            if (transactionFilter.CategoriesIds != null && transactionFilter.CategoriesIds.Count != 0)
+                query = query.Where(t => transactionFilter.CategoriesIds.Contains(t.CategoryId));
+
+            if (transactionFilter.SubCategoriesIds != null && transactionFilter.SubCategoriesIds.Count != 0)
+                query = query.Where(t => transactionFilter.SubCategoriesIds.Contains(t.SubCategoryId));
+
+            if (transactionFilter.AccountId.HasValue)
+                query = query.Where(t => t.AccountId == transactionFilter.AccountId);
+
+            var transactions = await query.ProjectTo<TransactionResponseDto>(_mapper.ConfigurationProvider).ToListAsync();
+            return transactions;
         }
         public async Task DeleteByIdAsync(Guid id, Guid userId)
         {

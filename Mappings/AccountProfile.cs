@@ -17,8 +17,6 @@ namespace FinanceApi.Mappings
                     src.Transactions.Any() ?
                         src.Transactions
                         .Sum(t => t.Type == TransactionType.Income ? t.Value : -t.Value) : 0));
-
-            CreateMap<Transaction, AccountTransactionResponseDto>();
         }
     }
 }

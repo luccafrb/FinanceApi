@@ -10,7 +10,7 @@ namespace FinanceApi.Models
         public string? Phone { get; set; }
         public virtual ICollection<Account> Accounts { get; set; } = [];
         public User() { }
-        public User(string name, string email, string password, string phone)
+        public User(string name, string email, string password, string? phone)
         {
             var id = Guid.NewGuid();
 

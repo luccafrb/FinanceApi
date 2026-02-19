@@ -3,6 +3,7 @@ using FinanceApi.DTOs.Create;
 using FinanceApi.Services.Users;
 using Microsoft.AspNetCore.Authorization;
 using SQLitePCL;
+using FinanceApi.DTOs.Responses;
 
 namespace FinanceApi.Controllers.Users
 {
@@ -23,9 +24,9 @@ namespace FinanceApi.Controllers.Users
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAllAsync([FromQuery] TransactionFilterDto transactionFilter)
         {
-            var transactions = await _service.GetAllAsync(UserId);
+            var transactions = await _service.GetAllAsync(transactionFilter, UserId);
 
             return transactions is null
                 ? NotFound()
