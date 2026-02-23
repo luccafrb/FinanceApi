@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace LedgerCore.Models
+namespace LedgerCore.Domain.Entities
 {
     public class Transaction
     {

@@ -1,4 +1,5 @@
-namespace LedgerCore.Models
+namespace LedgerCore.Domain.Entities
+
 {
     public class Account
     {
