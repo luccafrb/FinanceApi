@@ -1,11 +1,8 @@
-using LedgerCore.Data;
-using LedgerCore.Models;
-using LedgerCore.Services.Admins;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace LedgerCore.Controllers.Admins
+namespace LedgerCore.API.Controllers.Admins
 {
     [Authorize(Roles = "Admin")]
     [ApiController]
